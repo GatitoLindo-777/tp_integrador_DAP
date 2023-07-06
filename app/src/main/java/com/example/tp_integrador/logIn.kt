@@ -17,7 +17,8 @@ class mutablelist
 //data class User (var username: String, var password: String, var mail: String, var nickname: String)
 
 class logIn : Fragment() {
-    val sharedViewModel by activityViewModels()
+    val sharedViewModel : SharedViewModel by activityViewModels()
+    lateinit var v: View
 
     companion object {
         fun newInstance() = logIn()
@@ -26,26 +27,7 @@ class logIn : Fragment() {
     lateinit var buttonSignin : Button
     lateinit var inputUser : EditText
     lateinit var inputPassword : EditText
-    private var user0: String = "gaspar0"
-    private var user1: String = "gaspar1"
-    private var user2: String = "gaspar2"
-    private var user3: String = "gaspar3"
-    private var user4: String = "gaspar4"
-    private var password0: String = "0"
-    private var password1: String = "1"
-    private var password2: String = "2"
-    private var password3: String = "3"
-    private var password4: String = "4"
-    private var mail0: String = "mail0"
-    private var mail1: String = "mail1"
-    private var mail2: String = "mail2"
-    private var mail3: String = "mail3"
-    private var mail4: String = "mail4"
-    private var nickname0: String = "gaspi0"
-    private var nickname1: String = "gaspi1"
-    private var nickname2: String = "gaspi2"
-    private var nickname3: String = "gaspi3"
-    private var nickname4: String = "gaspi4"
+
 
  //   var userData: MutableList<User> = mutableListOf()
 
@@ -56,20 +38,18 @@ class logIn : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_log_in, container, false)
+         v = inflater.inflate(R.layout.fragment_log_in, container, false)
 
-        sharedViewModel.userData.add(User(user0, password0, mail0, nickname0))
-        sharedViewModel.userData.add(User(user1, password1, mail1, nickname1))
-        sharedViewModel.userData.add(User(user2, password2, mail2, nickname2))
-        sharedViewModel.userData.add(User(user3, password3, mail3, nickname3))
-        sharedViewModel.userData.add(User(user4, password4, mail4, nickname4))
+        buttonSignup = v.findViewById(R.id.buttonSignUp)
+        buttonSignin = v.findViewById(R.id.buttonSignIn)
+        inputUser = v.findViewById(R.id.editTextUser)
+        inputPassword = v.findViewById(R.id.editTextPassword)
 
-
-        buttonSignup = findViewById(R.id.buttonSignUp)
-        buttonSignin = findViewById(R.id.buttonSignIn)
-        inputUser = findViewById(R.id.editTextUser)
-        inputPassword = findViewById(R.id.editTextPassword)
-
+        sharedViewModel.userData.add(User("gaspar0", "0", "mail0", "gaspi0"))
+        sharedViewModel.userData.add(User("gaspar1", "1", "mail1", "gaspi1"))
+        sharedViewModel.userData.add(User("gaspar2", "2", "mail2", "gaspi2"))
+        sharedViewModel.userData.add(User("gaspar3", "3", "mail3", "gaspi3"))
+        sharedViewModel.userData.add(User("gaspar4", "4", "mail4", "gaspi4"))
 
         buttonSignin.setOnClickListener {
             val inputUser: String = inputUser.text.toString()
@@ -82,16 +62,16 @@ class logIn : Fragment() {
 
             } else if (inputUser.isEmpty() || inputPass.isEmpty()) {
                 //label.text = inputText
-                Snackbar.make(it, "ingrese texto", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(v, "ingrese texto", Snackbar.LENGTH_SHORT).show()
             } else {
-                Snackbar.make(it, "usuario o contraseña incorrecto", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(v, "usuario o contraseña incorrecto", Snackbar.LENGTH_SHORT).show()
             }
         }
         buttonSignup.setOnClickListener{
 
             findNavController().navigate(R.id.action_logIn_to_signUp)
         }
-        return view
+        return v
     }
 
 
