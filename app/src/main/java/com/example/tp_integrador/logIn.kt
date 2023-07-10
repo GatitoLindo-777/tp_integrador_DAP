@@ -31,7 +31,7 @@ class logIn : Fragment() {
 
  //   var userData: MutableList<User> = mutableListOf()
 
-        private lateinit var viewModel: LogInViewModel
+       // private lateinit var viewModel: SharedViewModel
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -81,10 +81,6 @@ class logIn : Fragment() {
 
 
 
-override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LogInViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }

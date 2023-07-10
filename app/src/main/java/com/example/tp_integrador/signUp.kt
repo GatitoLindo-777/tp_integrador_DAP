@@ -29,7 +29,7 @@ class signUp : Fragment() {
 
     lateinit var v: View
 
-    private lateinit var viewModel: SignUpViewModel
+    //private lateinit var viewModel: SignUpViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,6 +68,7 @@ class signUp : Fragment() {
                     sharedViewModel.userData.add(User(inputUser, inputPass, inputMail, inputNick))
                     //label.text = "ususario creado"
                     Snackbar.make(it, "ususario creado", Snackbar.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_signUp_to_logIn)
                 } else if (userEncontrado != null || passEncontrada != null || mailEncontrado != null || nickEncontrado != null) {
                     //label.text = "usuario o contraseña ya existente"
                     Snackbar.make(it, "usuario o contraseña ya existente", Snackbar.LENGTH_SHORT)
