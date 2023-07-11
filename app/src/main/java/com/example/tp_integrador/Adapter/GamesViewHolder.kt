@@ -1,9 +1,11 @@
 package com.example.tp_integrador.Adapter
 
+import android.provider.ContactsContract
 import android.text.Layout
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +26,7 @@ class GamesViewHolder(view: View): RecyclerView.ViewHolder(view) {
         Glide.with(LogoPreview.context).load(GamesModel.photo).into(LogoPreview)
         //LayoutPreview.setOnClickListener{ Snackbar.make(it, "si", Snackbar.LENGTH_SHORT).show() }
         itemView.setOnClickListener{onClickListener(GamesModel)
+            //Toast.makeText(itemView.context, GamesModel.title, Toast.LENGTH_SHORT).show()
 
         }
 

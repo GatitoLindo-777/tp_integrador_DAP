@@ -26,6 +26,6 @@ class GamesAdapter(val GamesList:List<Games>,  private val onClickListener:(Game
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
-    private var onItemClickListener: OnItemClickListener? = null
+    var onItemClickListener: OnItemClickListener? = null
 
 }

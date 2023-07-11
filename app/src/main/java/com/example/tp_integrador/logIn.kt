@@ -13,7 +13,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 
-class mutablelist
+
+
 //data class User (var username: String, var password: String, var mail: String, var nickname: String)
 
 class logIn : Fragment() {

@@ -1,14 +1,18 @@
 package com.example.tp_integrador
 
+import android.content.ClipData
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.provider.ContactsContract.Contacts.Photo
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +21,10 @@ import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
     val sharedViewModel : SharedViewModel by activityViewModels()
-    lateinit var v: View
+    val viewModel : GamesListViewModel by activityViewModels()
 
+    lateinit var v: View
+    lateinit var recyclerGames: RecyclerView
     companion object {
         fun newInstance() = HomeFragment()
     }
@@ -31,19 +37,32 @@ class HomeFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_home, container, false)
 
+
+        recyclerGames= v.findViewById(R.id.RecyclerGames)
+
         initRecyclerView()
+
 
         return v
     }
     fun initRecyclerView(){
         val RecyclerView = v.findViewById<RecyclerView>(R.id.RecyclerGames)
+        recyclerGames.setHasFixedSize(true)
         RecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        RecyclerView.adapter = GamesAdapter(SharedViewModel.GamesList)
-        {onItemSelected(it)}
+        RecyclerView.adapter = GamesAdapter(sharedViewModel.getGames()){Games ->
+            viewModel.GameTitle = Games.title
+            viewModel.GameDescription = Games.description
+            viewModel.GameRating = Games.rating
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_itemFragment)
+
+        }
+                //{onItemSelected(it)}
     }
     fun onItemSelected(games: Games, ) {
-        //Snackbar.make(v, "si", Snackbar.LENGTH_SHORT).show()
+        //Snackbar.make(v, "", Snackbar.LENGTH_SHORT).show()
+
         findNavController().navigate(R.id.action_homeFragment_to_itemFragment)
+
     }
 
 
