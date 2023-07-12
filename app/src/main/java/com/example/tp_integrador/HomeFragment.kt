@@ -21,7 +21,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
     val sharedViewModel : SharedViewModel by activityViewModels()
-    val viewModel : GamesListViewModel by activityViewModels()
 
     lateinit var v: View
     lateinit var recyclerGames: RecyclerView
@@ -38,7 +37,7 @@ class HomeFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_home, container, false)
 
 
-        recyclerGames= v.findViewById(R.id.RecyclerGames)
+        //recyclerGames= v.findViewById(R.id.RecyclerGames)
 
         initRecyclerView()
 
@@ -47,23 +46,21 @@ class HomeFragment : Fragment() {
     }
     fun initRecyclerView(){
         val RecyclerView = v.findViewById<RecyclerView>(R.id.RecyclerGames)
-        recyclerGames.setHasFixedSize(true)
+        //recyclerGames.setHasFixedSize(true)
         RecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        RecyclerView.adapter = GamesAdapter(sharedViewModel.getGames()){Games ->
-            viewModel.GameTitle = Games.title
-            viewModel.GameDescription = Games.description
-            viewModel.GameRating = Games.rating
-            view?.findNavController()?.navigate(R.id.action_homeFragment_to_itemFragment)
+        RecyclerView.adapter = GamesAdapter(sharedViewModel.GamesList) { onItemSelected(it) }
+        view?.findNavController()?.navigate(R.id.action_homeFragment_to_itemFragment)
 
-        }
-                //{onItemSelected(it)}
+                //
+
     }
+
     fun onItemSelected(games: Games, ) {
         //Snackbar.make(v, "", Snackbar.LENGTH_SHORT).show()
-
         findNavController().navigate(R.id.action_homeFragment_to_itemFragment)
-
     }
-
-
 }
+
+
+
+

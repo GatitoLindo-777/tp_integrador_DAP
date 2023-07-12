@@ -2,7 +2,7 @@ package com.example.tp_integrador
 
 import androidx.lifecycle.ViewModel
 
-class SharedViewModel : ViewModel() {
+        class SharedViewModel : ViewModel() {
     val position =0
     //var GamesList : MutableList<Games> = mutableListOf ()
     var GamesList : MutableList<Games> = mutableListOf()
@@ -16,10 +16,8 @@ class SharedViewModel : ViewModel() {
          GamesList.add(Games("Sea of Thives", "9/10", "The multiplayer game sees players explore an open world via a pirate ship from a first-person perspective. Groups of players encounter each other regularly during their adventures, sometimes forming alliances, and sometimes going head-to-head. Sea of Thieves was conceived in 2014.", "https://store-images.s-microsoft.com/image/apps.21319.14554784103656548.6c0bfca6-ceff-4368-9bde-2fe50f344136.c8d6c767-18a9-49cd-b9ca-4cc9a3a336e5"))
         GamesList.add(Games("DOOM", "10/10", "In Doom, players assume the role of an unnamed space marine, who became popularly nicknamed \"Doomguy\" by the community before being retconned as Doom Slayer, fighting his way through hordes of invading demons from Hell.", "https://i.pinimg.com/originals/bf/23/49/bf2349d574dc7fec2e5a70bd9cffef9c.jpg"),)
     }
-    fun getGames () : MutableList<Games>{
+    //fun getGames () : MutableList<Games>{ return GamesList }
 
-        return GamesList
-}
 
     var userData: MutableList<User> = mutableListOf()
 

@@ -29,7 +29,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class ItemFragment : Fragment() {
     val sharedViewModel : SharedViewModel by activityViewModels()
-    lateinit var viewModel: GamesListViewModel
     lateinit var v: View
    // lateinit var GamesModel: Games
     private var param1: String? = null
@@ -53,9 +52,9 @@ class ItemFragment : Fragment() {
 
 
 
-        Title.text = viewModel.GameTitle
-        Description.text = viewModel.GameDescription
-        Rating.text = viewModel.GameRating
+        //Title.text = viewModel.GameTitle
+        //Description.text = viewModel.GameDescription
+        //Rating.text = viewModel.GameRating
 
 
 

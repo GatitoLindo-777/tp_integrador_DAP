@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -26,8 +27,7 @@ class GamesViewHolder(view: View): RecyclerView.ViewHolder(view) {
         Glide.with(LogoPreview.context).load(GamesModel.photo).into(LogoPreview)
         //LayoutPreview.setOnClickListener{ Snackbar.make(it, "si", Snackbar.LENGTH_SHORT).show() }
         itemView.setOnClickListener{onClickListener(GamesModel)
-            //Toast.makeText(itemView.context, GamesModel.title, Toast.LENGTH_SHORT).show()
-
+            //Toast.makeText(itemView.context, GamesModel.description, Toast.LENGTH_SHORT).show()
         }
 
     }
