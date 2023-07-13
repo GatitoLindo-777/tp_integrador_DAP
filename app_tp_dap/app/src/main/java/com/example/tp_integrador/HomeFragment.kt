@@ -20,7 +20,7 @@ import com.example.tp_integrador.Adapter.GamesAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
-    val sharedViewModel : SharedViewModel by activityViewModels()
+    val sharedViewModel : SharedViewModel by activityViewModels ()
 
     lateinit var v: View
     lateinit var recyclerGames: RecyclerView
@@ -58,6 +58,9 @@ class HomeFragment : Fragment() {
     fun onItemSelected(games: Games, ) {
         //Snackbar.make(v, "", Snackbar.LENGTH_SHORT).show()
         findNavController().navigate(R.id.action_homeFragment_to_itemFragment)
+        sharedViewModel.itemSelected = games
+
+
     }
 }
 

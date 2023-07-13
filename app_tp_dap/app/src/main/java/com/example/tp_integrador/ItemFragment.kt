@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 
+
 import com.example.tp_integrador.Games
 
 
@@ -34,6 +35,10 @@ class ItemFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var Title: TextView
+    lateinit var Rating: TextView
+    lateinit var Description: TextView
+    lateinit var Logo: ImageView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,17 +47,20 @@ class ItemFragment : Fragment() {
         v=  inflater.inflate(R.layout.fragment_item, container, false)
 
 
-        val Title = view?.findViewById<TextView>(R.id.GameTitle)
-        val Rating = view?.findViewById<TextView>(R.id.GamesRating)
-        val Description = view?.findViewById<TextView>(R.id.GamesDescription)
-        val Logo = view?.findViewById<ImageView>(R.id.GamesLogos)
+        Title = v.findViewById<TextView>(R.id.GameTitle)
+        Rating = v.findViewById<TextView>(R.id.GamesRating)
+        Description = v.findViewById<TextView>(R.id.GamesDescription)
+        Logo = v.findViewById<ImageView>(R.id.GamesLogos)
 
         //viewModel = ViewModelProvider(requireActivity()).get(DescriptionViewModel::class.java)
         //viewModelBookList = ViewModelProvider(requireActivity()).get(BookListViewModel::class.java)
+        //var Selected: Games = sharedViewModel.GamesList.get(sharedViewModel.itemSelected)
 
 
-
-        //Title.text = viewModel.GameTitle
+        Title.text = sharedViewModel.itemSelected.title
+        Rating.text = sharedViewModel.itemSelected.rating
+        Description.text = sharedViewModel.itemSelected.description
+        Glide.with(Logo.context).load(sharedViewModel.itemSelected.photo).into(Logo)
         //Description.text = viewModel.GameDescription
         //Rating.text = viewModel.GameRating
 
